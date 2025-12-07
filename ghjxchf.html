@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>تحويل إلى حروف كبتل</title>
+    <link rel="stylesheet" href="stye.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=favorite" />
+    <style>
+      /* استيراد خط جديد جميل */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif; /* تغيير نوع الخط */
+    background: linear-gradient(120deg, #ff0077, #eb0470);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    overflow-x: hidden;
+    animation: bgGradient 15s ease infinite;
+}
+
+/* صندوق الرسالة */
+div {
+    background: linear-gradient(120deg, rgba(231,124,178,0.85), #c73d7e);
+    border-radius: 15px;
+    text-align: center;
+    margin: 10px 70px;
+    padding: 0px 0px;
+    direction: rtl;
+    box-shadow: 0px 6px 25px rgba(0,0,0,0.3);
+    transform: translateY(-50px);
+    opacity: 0;
+    animation: slideFadeIn 1s forwards;
+}
+
+/* العنوان */
+h1 {
+    color: #fff;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    padding: 0 20px;
+}
+
+/* الفقرة */
+p {
+    color: #ebebf1;
+    font-size: 1.8rem;
+    line-height: 2.5rem; /* زيادة المسافة بين الأسطر */
+    margin: 15px 0;       /* مسافة فوق وتحت الفقرة */
+    word-wrap: break-word; /* لف النصوص الطويلة */
+    padding: 0 20px;      /* حشوة جانبية للنص */
+}
+
+
+/* الزر */
+button {
+    background: linear-gradient(45deg, #ff0077, #eb0470, #ff5ea5);
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 2rem;
+    padding: 1rem 3rem;
+    margin: 2rem auto 0;
+    display: block;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    transition: all 0.4s ease;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #ff5ea5, #eb0470, #ff0077);
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+}
+
+/* تأثير الخلفية المتدرجة المتحركة */
+@keyframes bgGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* تأثير ظهور صندوق الرسالة تدريجيًا */
+@keyframes slideFadeIn {
+    0% { transform: translateY(-50px); opacity: 0; }
+    60% { transform: translateY(10px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+    </style>
+  </head>
+
+  <body>
+
+  <div> 
+    <h1>رساله ليك يبنتي💞</h1>
+    <p id="id-1"></p>
+
+    
+  </div>
+  <div><p id="id-3"></p></div>
+  
+  <button id="id-2" type="button">عرض رساله 💌</button>
+  </body>
+ <script>
+  const button = document.getElementById("id-2");
+const messagePara = document.getElementById("id-1");
+const signaturePara = document.getElementById("id-3");
+
+// نصوص الرسالة
+const loveMessage = `يا حبّيبة قلبي ❤️…
+من نهار عرفتك والدنيا ولات احله بوجودك فها و وصوتك بدي أحلى حاجة تسمعها روحي، وعيونك سحروني بجمالهم . وحضنك صار موطني منرتاح الا فيه إنتي مش بس جزء من حياتي… إنتي حياتي كلّها، والفرحة اللي ما نبيهاش تنقص لحظة وحدة 😍.
+
+نحبك بطريقة ما نعرفش نوصفها، نحبك في كل نَفَس وكل نبضة، نحبك لأنك أنتي… لأنك حياتي نحبك الانك بنتي والانك جزء مني، والوجودك احله شي في حياتي. مهوا نوصفك شي شويه في حقك…🤍✨.
+
+نحبك اليوم، ونحبك بكرا، ونحبك بعد عمر كامل… ونحبك أكثر من اللي تتخيليه وأكثر من اللي نقدّر نقوله. ربي ما يحرمني منك يا أجمل نعمة ف حياتي 💕🌙.`;
+
+const signature = "A + M  = حب أبدي 💖";
+
+// دالة الكتابة حرف حرف مع تأثير fade in
+function typeWriter(text, element, delay = 50, callback) {
+    let i = 0;
+    element.innerHTML = ''; // استخدم innerHTML بدلاً من innerText
+    element.style.opacity = 1;
+    const timer = setInterval(() => {
+        element.innerHTML += text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
+        i++;
+        if(i >= text.length) {
+            clearInterval(timer);
+            if(callback) callback();
+        }
+    }, delay);
+}
+
+// عند الضغط على الزر
+button.addEventListener("click", () => {
+    // اهتزاز خفيف عند بداية الكتابة
+    messagePara.style.transform = 'translateY(-10px)';
+    setTimeout(() => messagePara.style.transform = 'translateY(0)', 200);
+
+    // كتابة الرسالة حرف حرف
+    typeWriter(loveMessage, messagePara, 30, () => {
+        typeWriter(signature, signaturePara, 60);
+    });
+});
+
+ </script> 
+</html>
