@@ -1,53 +1,35 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>لوحة المستخدم</title>
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- CSS الخارجي -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
 <body>
-
-    <!-- العنوان / الرصيد -->
-    <div class="title-cotent" id="title-cotent">
-        <span class="Money" id="Money"></span>
-    </div>
-
-    <!-- محتوى ديناميكي -->
-    <div class="content" id="content"></div>
-
-    <!-- الطلب -->
-    <div class="bley">
-        <div id="demand"></div>
-
-        <input type="number" id="bley.id" placeholder="أدخل ID">
-        <button id="bley.submit" onclick="sendBill()">إرسال الطلب</button>
-    </div>
-
-    <!-- جدول الطلبات -->
-    <div class="table-div">
-        <table class="table table-bordered text-center align-middle">
-            <thead class="table-light">
-                <tr>
-                    <th>معرف الطلب</th>
-                    <th>اسم المنتج</th>
-                    <th>الايدي</th>
-                    <th>حالة الطلب</th>
-                </tr>
-            </thead>
-            <tbody id="get-bill-product_id"></tbody>
-        </table>
-    </div>
-
-    <!-- Scripts -->
-    <script src="jave.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
+    
+        <div class="mb-3">
+            <h2>تسجيل الدخول</h2>
+            <label for="exampleInputEmail1" class="form-label">ادخل بريدك الاكتروني</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">ادخل كلمت مرور </label>
+            <input type="password" class="form-control" id="password">
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">تدكرني</label>
+        </div>
+        <button type="submit" id="login-submit" class="btn btn-primary">تسجيل الدخول</button>
 </body>
+<script src="jave.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
 </html>
